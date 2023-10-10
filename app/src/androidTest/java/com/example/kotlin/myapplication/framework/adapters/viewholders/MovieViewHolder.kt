@@ -11,6 +11,7 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.kotlin.myapplication.R
+import com.example.kotlin.myapplication.data.network.model.Movie.Movies
 import com.example.kotlin.myapplication.data.network.model.MovieBase
 import com.example.kotlin.myapplication.databinding.ItemMovieBinding
 import com.example.kotlin.myapplication.domain.MovieInfoRequirement
@@ -49,9 +50,9 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
 
         CoroutineScope(Dispatchers.IO).launch {
             val movieInfoRequirement = MovieInfoRequirement()
-            val result: movie? = movieInfoRequirement(movieNumber)
+            val result: Movies? = movieInfoRequirement(movieNumber)
             CoroutineScope(Dispatchers.Main).launch {
-                val urlImage = result?.sprites?.other?.official_artwork?.front_default.toString()
+                val urlImage = result?.results?.toString()
 
                 val requestOptions =
                     RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -62,50 +63,6 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
 
                 val card =
                     binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(R.id.cvPokemon)
-
-                val types = result?.types
-                val principaltype = types?.get(0)?.type?.name.toString()
-
-                val principalColor = getColor(principaltype)
-                card.setCardBackgroundColor(Color.parseColor(principalColor))
-
-
-
-                if (types != null) {
-                    val type1Text =
-                        binding.llPokemon.findViewById<androidx.appcompat.widget.AppCompatTextView>(
-                            R.id.TVType1
-                        )
-
-                    val type1CV = binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(
-                        R.id.CVType1
-                    )
-
-                    val type2Text =
-                        binding.llPokemon.findViewById<androidx.appcompat.widget.AppCompatTextView>(
-                            R.id.TVType2
-                        )
-
-                    val type2CV = binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(
-                        R.id.CVType2
-                    )
-
-
-                    type1Text.text = principaltype
-                    type1CV.background = generateShapeWBorder(principaltype)
-
-                    if (types.size > 1) {
-                        val secondtype = types[1].type.name.toString()
-                        type2Text.text = secondtype
-                        type2CV.background = generateShapeWBorder(secondtype)
-
-                    } else {
-                        type2Text.text = ""
-                        type2Text.background = null
-                        type2CV.background = null
-                    }
-
-                }
             }
         }
     }

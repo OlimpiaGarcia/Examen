@@ -1,6 +1,6 @@
 package com.example.kotlin.myapplication.data.network
 
-import com.example.kotlin.myapplication.data.network.model.Movie.Movie
+import com.example.kotlin.myapplication.data.network.model.Movie.Movies
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,5 +17,5 @@ interface MovieAPIService {
     @GET("movie/{numberMovie}")
     suspend fun getMovieInfo(
         @Path("numberMovie") numberMovie:Int
-    ): Movie
+    ): Movies
 }
