@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.kotlin.myapplication"
+    namespace = "com.example.kotlin.examv2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.kotlin.myapplication"
+        applicationId = "com.example.kotlin.examv2"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -33,10 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -44,31 +40,32 @@ dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
+    implementation ("androidx.navigation:navigation-fragment:2.7.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    //Retrofit - APIs and https
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    //Glide - Image processing
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
-    implementation("jp.wasabeef:glide-transformations:4.3.0")
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("jp.wasabeef:glide-transformations:4.3.0")
 
-    //Corrutinas - Asynchronous Code
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    //Corrutinas
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
     //Fragment
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation ("androidx.fragment:fragment-ktx:1.5.0")
     //Activity
-    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation ("androidx.activity:activity-ktx:1.5.0")
     //Databinding
-    implementation("androidx.databinding:databinding-runtime:8.1.1")
+    implementation ("androidx.databinding:databinding-runtime:7.1.2")
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 }
