@@ -16,7 +16,7 @@
         tools:targetApi="34" >
 
         <activity
-            android:name=".framework.views.activities.SplashscreenActivity"
+            android:name=".framework.views.activities.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApplication.NoActionBar">

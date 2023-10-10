@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.kotlin.myapplication.databinding.ActivitySplashscreenBinding
 import com.example.kotlin.myapplication.framework.viewmodel.SplashscreenViewModel
-import com.example.kotlin.pokedexapp.framework.views.activities.MainActivity
+import com.example.kotlin.myapplication.framework.views.activities.MainActivity
 
 @SuppressLint("CustomSplashScreen")
-class SplashscreenActivity:AppCompatActivity() {
+class SplashScreenActivity:AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashscreenBinding
     private val viewModel: SplashscreenViewModel by viewModels()

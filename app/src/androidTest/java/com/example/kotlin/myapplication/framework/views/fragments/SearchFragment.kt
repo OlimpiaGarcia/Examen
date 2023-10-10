@@ -1,4 +1,4 @@
-package com.example.kotlin.pokedexapp.framework.views.fragments
+package com.example.kotlin.myapplication.framework.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin.pokedexapp.databinding.FragmentSearchBinding
-import com.example.kotlin.pokedexapp.framework.viewmodel.SearchViewModel
+import com.example.kotlin.myapplication.databinding.FragmentSearchBinding
+import com.example.kotlin.myapplication.framework.viewmodel.SearchViewModel
 
 
 class SearchFragment: Fragment() {

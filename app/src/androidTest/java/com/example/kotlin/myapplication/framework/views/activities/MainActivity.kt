@@ -1,15 +1,15 @@
-package com.example.kotlin.pokedexapp.framework.views.activities
+package com.example.kotlin.myapplication.framework.views.activities
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.kotlin.pokedexapp.R
-import com.example.kotlin.pokedexapp.utils.Constants
-import com.example.kotlin.pokedexapp.databinding.ActivityMainBinding
-import com.example.kotlin.pokedexapp.framework.viewmodel.MainViewModel
-import com.example.kotlin.pokedexapp.framework.views.fragments.MovieFragment
-import com.example.kotlin.pokedexapp.framework.views.fragments.SearchFragment
+import com.example.kotlin.myapplication.R
+import com.example.kotlin.myapplication.utils.Constants
+import com.example.kotlin.myapplication.databinding.ActivityMainBinding
+import com.example.kotlin.myapplication.framework.viewmodel.MainViewModel
+import com.example.kotlin.myapplication.framework.views.fragments.MovieFragment
+import com.example.kotlin.myapplication.framework.views.fragments.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
         initializeBinding()
         initializeObservers()
         initializeListeners()
-        exchangeCurrentFragment(MovieFragment(), Constants.MENU_POKEDEX)
+        exchangeCurrentFragment(MovieFragment(), Constants.MENU_MOVIE)
 
     }
 
     private fun initializeListeners(){
         binding.appBarMain.llPokedex.setOnClickListener {
-            selectMenuOption(Constants.MENU_POKEDEX)
+            selectMenuOption(Constants.MENU_MOVIE)
         }
 
         binding.appBarMain.llSearch.setOnClickListener {
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         when(menuOption){
-            Constants.MENU_POKEDEX -> exchangeCurrentFragment(MovieFragment(),Constants.MENU_POKEDEX)
+            Constants.MENU_MOVIE -> exchangeCurrentFragment(MovieFragment(),Constants.MENU_MOVIE)
             Constants.MENU_SEARCH -> exchangeCurrentFragment(SearchFragment(),Constants.MENU_SEARCH)
         }
     }

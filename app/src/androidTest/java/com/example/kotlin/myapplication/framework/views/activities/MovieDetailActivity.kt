@@ -1,4 +1,4 @@
-package com.example.kotlin.pokedexapp.framework.views.activities
+package com.example.kotlin.myapplication.framework.views.activities
 
 import android.app.Activity
 import android.graphics.Color
@@ -6,89 +6,58 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
-import com.example.kotlin.pokedexapp.data.PokemonRepository
-import com.example.kotlin.pokedexapp.databinding.ActivityPokemonDetailBinding
-import com.example.kotlin.pokedexapp.utils.Constants
+import com.example.kotlin.myapplication.data.MovieRepository
+import com.example.kotlin.myapplication.data.network.model.Movie.Movies
+import com.example.kotlin.myapplication.databinding.ActivityMovieDetailBinding
+import com.example.kotlin.myapplication.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MovieDetailActivity : Activity() {
-    private lateinit var binding: ActivityPokemonDetailBinding
-    private var pokemonUrl: String? = null
-    private val pokemonRepository = PokemonRepository()
+    private lateinit var binding: ActivityMovieDetailBinding
+    private var movieUrl: String? = null
+    private val movieRepository = MovieRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeBinding()
         manageIntent()
-        obtainPokemonData()
+        obtainMovieData()
     }
 
     private fun initializeBinding() {
-        binding = ActivityPokemonDetailBinding.inflate(layoutInflater)
+        binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
     private fun manageIntent() {
         if (intent != null) {
-            pokemonUrl = intent.getStringExtra(Constants.URL_POKEMON)
-            Log.d("Salida", pokemonUrl.toString())
+            movieUrl = intent.getStringExtra(Constants.URL_MOVIE)
+            Log.d("Salida", movieUrl.toString())
         }
     }
 
-    private fun obtainPokemonData() {
+    private fun obtainMovieData() {
 
-        val pokemonNumber = pokemonUrl?.split("/")?.get(6)
+        val movieNumber = movieUrl?.split("/")?.get(6)
 
 
 
         CoroutineScope(Dispatchers.IO).launch {
-            val pokemon =
-                pokemonNumber?.let { pokemonRepository.getPokemonInfo(pokemonNumber.toInt()) }
+            val movie =
+                movieNumber?.let { movieRepository.getMovieInfo(movieNumber.toInt()) }
 
             withContext(Dispatchers.Main) {
-                pokemon?.let { updatePokemonDetails(it) }
+                movie?.let { updateMovieDetails(it) }
             }
 
         }
 
     }
 
-    private fun updatePokemonDetails(pokemon: Pokemon) {
-
-        Glide.with(this).load(pokemon.sprites.front_default)
-            .into(binding.IVPhoto)
-
-
-        binding.TVName.text = pokemon.name
-
-
-        val weight = pokemon.weight / 10.0
-        val height = pokemon.height / 10.0
-
-        binding.TVWeightValue.text = weight.toString() + " kg"
-        binding.TVHeightValue.text = height.toString() + " m"
-
-        binding.TVType1.background = generateShapeWBorder(pokemon.types[0].type.name)
-
-        binding.IVBgPokemon.background = generateBackground(pokemon.types[0].type.name)
-
-        binding.TVType1.text = pokemon.types[0].type.name
-        if (pokemon.types.size > 1) {
-            binding.TVType2.text = pokemon.types[1].type.name
-            binding.TVType2.background = generateShapeWBorder(pokemon.types[1].type.name)
-        } else {
-            binding.TVType2.text = ""
-        }
-
-        binding.TVHPValue.text = pokemon.stats[0].base_stat.toString()
-        binding.TVAttackValue.text = pokemon.stats[1].base_stat.toString()
-        binding.TVDefenseValue.text = pokemon.stats[2].base_stat.toString()
-        binding.TVSpeedValue.text = pokemon.stats[5].base_stat.toString()
-        binding.TVXPValue.text = pokemon.base_experience.toString()
-
+    private fun updateMovieDetails(movie: Movies) {
 
 
 

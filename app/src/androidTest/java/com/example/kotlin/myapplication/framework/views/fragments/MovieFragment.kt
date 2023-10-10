@@ -52,7 +52,7 @@ class MovieFragment : Fragment() {
     }
 
     private fun initializeComponents(root: View) {
-        recyclerView = root.findViewById(R.id.RVPokemon)
+        recyclerView = root.findViewById(R.id.RVMovie)
     }
 
     private fun initializeObservers() {

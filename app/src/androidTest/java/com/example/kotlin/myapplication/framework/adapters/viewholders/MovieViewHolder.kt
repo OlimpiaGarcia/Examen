@@ -16,7 +16,7 @@ import com.example.kotlin.myapplication.data.network.model.MovieBase
 import com.example.kotlin.myapplication.databinding.ItemMovieBinding
 import com.example.kotlin.myapplication.domain.MovieInfoRequirement
 import com.example.kotlin.myapplication.utils.Constants
-import com.example.kotlin.pokedexapp.framework.views.activities.MovieDetailActivity
+import com.example.kotlin.myapplication.framework.views.activities.MovieDetailActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
