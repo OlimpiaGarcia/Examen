@@ -13,15 +13,15 @@ import kotlinx.coroutines.launch
 
 class MovieViewModel:ViewModel() {
 
-    val MovieObjectLiveData = MutableLiveData<MovieObject>()
-    private val pokemonListRequirement = MovieListRequirement()
+    val movieObjectLiveData = MutableLiveData<MovieObject>()
+    private val movieListRequirement = MovieListRequirement()
 
     fun getMovieList(){
         viewModelScope.launch(Dispatchers.IO) {
-            val result: MovieObject? = pokemonListRequirement(Constants.MAX_POKEMON_NUMBER)
+            val result: MovieObject? = movieListRequirement(Constants.MAX_MOVIE_NUMBER)
             Log.d("SalidaCOunt", result?.count.toString())
             CoroutineScope(Dispatchers.Main).launch {
-                pokedexObjectLiveData.postValue(result!!)
+                movieObjectLiveData.postValue(result!!)
             }
         }    }
 }

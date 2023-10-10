@@ -13,7 +13,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.kotlin.myapplication.R
 import com.example.kotlin.myapplication.data.network.model.MovieBase
 import com.example.kotlin.myapplication.databinding.ItemMovieBinding
+import com.example.kotlin.myapplication.domain.MovieInfoRequirement
 import com.example.kotlin.myapplication.utils.Constants
+import com.example.kotlin.pokedexapp.framework.views.activities.MovieDetailActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +29,7 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
         binding.TVName.text = item.name
         getMovieInfo(item.url, binding.IVPhoto, context)
 
-        binding.llMovie.setOnClickListener {
+        binding.llPokemon.setOnClickListener {
             passViewGoToMovieDetail(item.url, context)
         }
     }
@@ -46,7 +48,7 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
         val movieNumber: Int = Integer.parseInt(movieStringNumber)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val movieInfoRequirement = movieInfoRequirement()
+            val movieInfoRequirement = MovieInfoRequirement()
             val result: movie? = movieInfoRequirement(movieNumber)
             CoroutineScope(Dispatchers.Main).launch {
                 val urlImage = result?.sprites?.other?.official_artwork?.front_default.toString()
@@ -59,7 +61,7 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
 
 
                 val card =
-                    binding.llMovie.findViewById<androidx.cardview.widget.CardView>(R.id.cvMovie)
+                    binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(R.id.cvPokemon)
 
                 val types = result?.types
                 val principaltype = types?.get(0)?.type?.name.toString()
@@ -71,20 +73,20 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
 
                 if (types != null) {
                     val type1Text =
-                        binding.llMovie.findViewById<androidx.appcompat.widget.AppCompatTextView>(
+                        binding.llPokemon.findViewById<androidx.appcompat.widget.AppCompatTextView>(
                             R.id.TVType1
                         )
 
-                    val type1CV = binding.llMovie.findViewById<androidx.cardview.widget.CardView>(
+                    val type1CV = binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(
                         R.id.CVType1
                     )
 
                     val type2Text =
-                        binding.llMovie.findViewById<androidx.appcompat.widget.AppCompatTextView>(
+                        binding.llPokemon.findViewById<androidx.appcompat.widget.AppCompatTextView>(
                             R.id.TVType2
                         )
 
-                    val type2CV = binding.llMovie.findViewById<androidx.cardview.widget.CardView>(
+                    val type2CV = binding.llPokemon.findViewById<androidx.cardview.widget.CardView>(
                         R.id.CVType2
                     )
 

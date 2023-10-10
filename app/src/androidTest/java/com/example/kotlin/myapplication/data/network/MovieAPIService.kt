@@ -1,6 +1,6 @@
 package com.example.kotlin.myapplication.data.network
 
-import com.example.kotlin.myapplication.data.network.model.movie.Movie
+import com.example.kotlin.myapplication.data.network.model.Movie.Movie
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

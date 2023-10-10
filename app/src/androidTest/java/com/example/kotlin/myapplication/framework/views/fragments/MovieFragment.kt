@@ -1,4 +1,4 @@
-package com.example.kotlin.pokedexapp.framework.views.fragments
+package com.example.kotlin.myapplication.framework.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlin.pokedexapp.R
-import com.example.kotlin.pokedexapp.data.network.model.PokemonBase
-import com.example.kotlin.pokedexapp.databinding.FragmentPokedexBinding
-import com.example.kotlin.pokedexapp.framework.adapters.MovieAdapter
-import com.example.kotlin.pokedexapp.framework.viewmodel.MovieViewModel
+import com.example.kotlin.myapplication.R
+import com.example.kotlin.myapplication.data.network.model.MovieBase
+import com.example.kotlin.myapplication.databinding.FragmentMovieBinding
+import com.example.kotlin.myapplication.framework.adapters.MovieAdapter
+import com.example.kotlin.myapplication.framework.viewmodel.MovieViewModel
 
 class MovieFragment : Fragment() {
-    private var _binding: FragmentPokedexBinding? = null
+    private var _binding: FragmentMovieBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +25,7 @@ class MovieFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private val adapter: MovieAdapter = MovieAdapter()
-    private lateinit var data: ArrayList<PokemonBase>
+    private lateinit var data: ArrayList<MovieBase>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,14 +34,14 @@ class MovieFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
-        _binding = FragmentPokedexBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         data = ArrayList()
 
         initializeComponents(root)
         initializeObservers()
-        viewModel.getPokemonList()
+        viewModel.getMovieList()
 
         return root
     }
@@ -56,12 +56,12 @@ class MovieFragment : Fragment() {
     }
 
     private fun initializeObservers() {
-        viewModel.pokedexObjectLiveData.observe(viewLifecycleOwner) { poxedexObject ->
-            setUpRecyclerView(poxedexObject.results)
+        viewModel.movieObjectLiveData.observe(viewLifecycleOwner) { movieObject ->
+            setUpRecyclerView(movieObject.results)
         }
     }
 
-    private fun setUpRecyclerView(dataForList: ArrayList<PokemonBase>) {
+    private fun setUpRecyclerView(dataForList: ArrayList<MovieBase>) {
         recyclerView.setHasFixedSize(true)
         /*val linearLayoutManager = LinearLayoutManager(
             requireContext(),        LinearLayoutManager.VERTICAL,        false)*/
@@ -72,7 +72,7 @@ class MovieFragment : Fragment() {
             false
         )
         recyclerView.layoutManager = gridLayoutManager
-        adapter.PokemonAdapter(dataForList, requireContext())
+        adapter.MovieAdapter(dataForList, requireContext())
         recyclerView.adapter = adapter
     }
 }

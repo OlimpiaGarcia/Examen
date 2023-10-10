@@ -1,13 +1,13 @@
 package com.example.kotlin.myapplication.data.network
 
 import com.example.kotlin.myapplication.data.network.MovieAPIService
-
+import com.example.kotlin.myapplication.data.network.model.Movie.Movies
 
 
 class MovieApiClient {
     private lateinit var api: MovieAPIService
 
-    suspend fun getMovieList(limit:Int): com.example.kotlin.myapplication.data.network.model.MoviesObject?{
+    suspend fun getMovieList(limit:Int): com.example.kotlin.myapplication.data.network.model.MovieObject?{
         api = NetworkModuleDI()
         return try{
             api.getMovieList(limit)
@@ -17,7 +17,7 @@ class MovieApiClient {
         }
     }
 
-    suspend fun getMovieInfo(numberMovie:Int): Movie? {
+    suspend fun getMovieInfo(numberMovie:Int): Movies? {
         api = NetworkModuleDI()
         return try{
             api.getMovieInfo(numberMovie)

@@ -5,12 +5,12 @@
     android:background="@color/semiWhite">
 
     <ImageView
-        android:id="@+id/IVPokeball"
-        android:layout_width="196dp"
-        android:layout_height="196dp"
+        android:id="@+id/IVchico"
+        android:layout_width="118dp"
+        android:layout_height="71dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="1dp"
-        android:src="@drawable/pokeball" />
+        android:src="@drawable/chico" />
 
     <TextView
         android:id="@+id/TVName"
@@ -25,7 +25,7 @@
         android:layout_marginEnd="194dp"
         android:layout_marginRight="16dp"
         android:gravity="left"
-        android:text="Pokedex"
+        android:text="Movies"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="36dp"
@@ -33,16 +33,16 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVPokemon"
+        android:id="@+id/RVMovie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/TVName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="-4dp"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="-2dp" />
 
 </RelativeLayout>

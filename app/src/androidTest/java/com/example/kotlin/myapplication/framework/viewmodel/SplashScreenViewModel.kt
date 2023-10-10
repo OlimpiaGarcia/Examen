@@ -1,9 +1,9 @@
-package com.example.kotlin.pokedexapp.framework.viewmodel
+package com.example.kotlin.myapplication.framework.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kotlin.pokedexapp.utils.Constants
+import com.example.kotlin.myapplication.utils.Constants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

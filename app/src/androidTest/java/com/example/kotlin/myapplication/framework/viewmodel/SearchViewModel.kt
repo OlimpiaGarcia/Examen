@@ -1,4 +1,4 @@
-package com.example.kotlin.pokedexapp.framework.viewmodel
+package com.example.kotlin.myapplication.framework.viewmodel
 
 import androidx.lifecycle.ViewModel
 
