@@ -3,19 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/app_bar_main"
-        layout="@layout/main_navbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
 
-    <fragment
-        android:id="@+id/nav_host_fragment_content_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVMovie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/app_bar_main"
-        />
+        android:layout_height="match_parent" />
+
 
 </RelativeLayout>
